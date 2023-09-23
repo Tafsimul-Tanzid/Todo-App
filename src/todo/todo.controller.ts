@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, ValidationPipe } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from 'src/DTO/create-todo';
 import { TodoStatus } from 'src/Entity/todo.entity';
@@ -28,6 +28,10 @@ export class TodoController {
     @Param('id') id: number
   ) {
       return this.todoservice.update(id, status);
+  }
+  @Delete(':id')
+  deleteTodo(@Param('id') id: number){
+    return this.todoservice.delete(id);
   }
 }
 

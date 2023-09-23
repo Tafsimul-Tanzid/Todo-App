@@ -48,4 +48,12 @@ export class TodoService {
       throw new InternalServerErrorException('Something went wrong');
     }
   }
+  async delete(id){
+    try {
+        return await this.repo.delete({id});
+    }catch(err){
+        throw new InternalServerErrorException('Something went wrong');
+    }
+ 
+  }
 }
