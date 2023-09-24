@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { TodoEntity } from "./todo.entity";
 
 @Entity('users')
 export class UserEntity {
@@ -14,4 +15,7 @@ export class UserEntity {
 
   @Column()
   salt: string;
+
+  @OneToMany(()=> TodoEntity, (todo: TodoEntity)=>todo.user)
+  Todos: TodoEntity
 }

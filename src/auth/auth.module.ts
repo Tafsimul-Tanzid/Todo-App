@@ -26,6 +26,7 @@ const passportModule = PassportModule.register({ defaultStrategy: 'jwt' });
         })
     ],
   providers: [AuthService,JwtCustomStrategy],
-  controllers: [AuthController]
+  controllers: [AuthController],
+  exports: [passportModule, JwtCustomStrategy]
 })
 export class AuthModule {}
