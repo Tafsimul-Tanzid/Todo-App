@@ -45,13 +45,13 @@ export class AuthService {
         }
     
         const isPasswordMatch = await bcrypt.compare(password, user.password)
-    
+        // console.log(isPasswordMatch);
         if (isPasswordMatch) {
          const jwtPayload = {username};
          const jwtToken = await this.jwt.signAsync(jwtPayload, {expiresIn: '1d', algorithm: 'HS512'});
          return {token: jwtToken};
         } else {
-          throw new UnauthorizedException('Invalid credentials.');
+          throw new UnauthorizedException('Invalid credentials. Here is the problem');
         }
       }
     

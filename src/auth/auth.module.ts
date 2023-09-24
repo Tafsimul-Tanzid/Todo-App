@@ -8,9 +8,12 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { JwtCustomStrategy } from './jwt-custom.strategy';
 
+
+const passportModule = PassportModule.register({ defaultStrategy: 'jwt' });
 @Module({
     imports:[
         TypeOrmModule.forFeature([UserEntity]),
+        passportModule,
         JwtModule.register({
             secret: 'LOijtrkljdklsufidsui12jkj43k21l4',
             signOptions: {

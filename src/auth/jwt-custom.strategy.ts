@@ -6,15 +6,17 @@ import { UnauthorizedException } from "@nestjs/common";
 import { UserEntity } from "src/Entity/user.entity";
 
 export class JwtCustomStrategy extends PassportStrategy(Strategy) {
-  constructor(@InjectRepository(UserEntity) private repo: Repository<UserEntity>) {
+  constructor(
+    @InjectRepository(UserEntity) private repo: Repository<UserEntity>,
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'LOijtrkljdklsufidsui12jkj43k21l4'
+      secretOrKey: "LOijtrkljdklsufidsui12jkj43k21l4",
     });
   }
 
-  async validate(payload: {username: string}) {
-    const {username} = payload;
+  async validate(payload: { username: string }) {
+    const { username } = payload;
     const user = await this.repo.findOne({ where: { username } });
 
     if (!user) {
