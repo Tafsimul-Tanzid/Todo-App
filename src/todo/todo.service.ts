@@ -1,13 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { use } from 'passport';
-import { NotFoundError } from 'rxjs';
 import { CreateTodoDto } from 'src/DTO/create-todo';
 import { TodoEntity, TodoStatus } from 'src/Entity/todo.entity';
 import { UserEntity } from 'src/Entity/user.entity';
-import { User } from 'src/auth/user.decorator';
-import { FindOneOptions, Repository } from 'typeorm';
+import {  Repository } from 'typeorm';
 
 
 @Injectable()
